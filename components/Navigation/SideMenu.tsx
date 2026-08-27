@@ -85,7 +85,7 @@ export default function SideMenu() {
         <motion.button
           key={item.id}
           onClick={() => scroll(item.id)}
-          className={`absolute z-40 hidden lg:flex ${item.className}`}
+          className={`fixed z-40 hidden lg:flex ${item.className}`}
           initial={{
             opacity: 0,
             y: 20,

@@ -1,16 +1,13 @@
-import SplitBackground from "@/components/Background/SplitBackground";
-import Navbar from "@/components/Navigation/Navbar";
-import SideMenu from "@/components/Navigation/SideMenu";
-import RegisterButton from "@/components/Navigation/RegisterButton";
-
+// import Head from "../components/Navigation/head";
+import TracksSection from "../components/Tracks/TracksSection";
+import TeamUp from "../components/TeamUp/teamup";
 
 export default function Home() {
   return (
-    <main className="relative h-screen w-screen overflow-hidden">
-      <SplitBackground />
-      <RegisterButton/>
-      <Navbar />
-      <SideMenu/>
+    <main className="min-h-screen w-screen bg-black text-white relative overflow-x-hidden flex flex-col items-center font-sans">
+      <div className="flex-1 flex flex-col items-center justify-center w-full -mt-2 md:-mt-6 lg:-mt-10">
+        <TeamUp />
+      </div>
     </main>
   );
 }
