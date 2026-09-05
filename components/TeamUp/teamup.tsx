@@ -25,10 +25,10 @@ export const TEAM_OPTIONS = [
 export default function TeamUp() {
   return (
     <main className="hidden min-h-screen w-full overflow-hidden bg-black text-white lg:flex lg:flex-col select-none">
-      <Head activeTab="team-up" />
+      {/* <Head activeTab="team-up" /> */}
 
       <div className="grid flex-1 grid-cols-5 items-center gap-8 px-8 pb-8 pt-2 xl:gap-12 xl:px-12 xl:pb-10">
-        <section className="col-span-3 flex h-full items-center justify-center">
+        <section className="col-span-3 flex h-screen items-center justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -46,7 +46,7 @@ export default function TeamUp() {
           </motion.div>
         </section>
 
-        <section className="col-span-2 flex h-full items-center justify-center">
+        <section className="col-span-2 flex h-screen items-center justify-center">
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}

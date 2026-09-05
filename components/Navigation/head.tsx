@@ -5,12 +5,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface HeadProps {
-  activeTab?: "timeline" | "tracks" | "team-up" | "faq";
+  activeTab?: "timeline" | "tracks" | "team-up" | "faq" | "teams";
 }
 
 export default function Head({ activeTab }: HeadProps) {
   return (
-    <header className="relative w-full flex items-center justify-between px-8 pt-2 pb-2 md:px-12 md:pt-3 md:pb-3 lg:px-16 lg:pt-4 lg:pb-4 z-40 bg-transparent">
+    <header className="relative w-full flex items-center justify-between px-8 py-4 md:px-12 md:py-5 lg:px-16 lg:py-6 z-40 bg-transparent">
       {/* Left: Logo */}
       <Link href="/" className="relative w-[106px] h-[45px] md:w-[136px] md:h-[53px] transition-transform hover:scale-105">
         <Image
@@ -55,12 +55,12 @@ export default function Head({ activeTab }: HeadProps) {
 
         {/* Team Up */}
         <div className="relative flex flex-col items-center">
-          <Link href="/#team-up" className="hover:opacity-75 transition-opacity duration-200">
+          <Link href="/teams" className="hover:opacity-75 transition-opacity duration-200">
             <div className="relative w-[91px] h-[22px]">
               <Image src="/tracks/TEAM UP.svg" alt="Team Up" fill className="object-contain" />
             </div>
           </Link>
-          {activeTab === "team-up" && (
+          {(activeTab === "team-up" || activeTab === "teams") && (
             <div className="absolute -bottom-5 w-[106px] h-[22px] pointer-events-none">
               <Image src="/tracks/Vector 105.svg" alt="" fill className="object-contain" />
             </div>
