@@ -20,8 +20,8 @@ export interface TeamMember {
 export const DEFAULT_MEMBERS: TeamMember[] = [
   {
     id: "member-1",
-    name: "Shashwat Shrye",
-    rollNo: "25BEL0010",
+    name: "Tanishka Sharma",
+    rollNo: "25BDS0116",
     silhouette: "/team/image 30.png",
     cardBg: "/team/Rectangle 1.png",
     reflectionBg: "/team/Rectangle 28.png",
@@ -31,37 +31,37 @@ export const DEFAULT_MEMBERS: TeamMember[] = [
   },
   {
     id: "member-2",
-    name: "Shashwat Shrye",
-    rollNo: "25BEL0010",
+    name: "Tanishka Sharma",
+    rollNo: "25BDS0116",
     silhouette: "/team/image 34.png",
     cardBg: "/team/Rectangle 24.png",
     reflectionBg: "/team/Rectangle 29.png",
     scribble: "/team/Vector 257.png",
     layout: "silhouette-left",
-    aspectRatio: "aspect-[330/506]",
+    aspectRatio: "aspect-[355/603]",
   },
   {
     id: "member-3",
-    name: "Shashwat Shrye",
-    rollNo: "25BEL0010",
+    name: "Tanishka Sharma",
+    rollNo: "25BDS0116",
     silhouette: "/team/image 33.png",
     cardBg: "/team/Rectangle 24.png",
     bgFlip: true,
     reflectionBg: "/team/Rectangle 29.png",
     scribble: "/team/Vector 257.png",
     layout: "silhouette-right",
-    aspectRatio: "aspect-[330/506]",
+    aspectRatio: "aspect-[355/603]",
   },
   {
     id: "member-4",
-    name: "Shashwat Shrye",
-    rollNo: "25BEL0010",
+    name: "Tanishka Sharma",
+    rollNo: "25BDS0116",
     silhouette: "/team/image 31.png",
     cardBg: "/team/Rectangle 26.png",
     reflectionBg: "/team/Rectangle 30.png",
     scribble: "/team/Vector 257.png",
     layout: "silhouette-right",
-    aspectRatio: "aspect-[300/603]",
+    aspectRatio: "aspect-[355/603]",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function TeamSection({
   members = DEFAULT_MEMBERS,
 }: TeamSectionProps) {
   return (
-    <main className="hidden lg:flex lg:flex-col min-h-screen w-full bg-black text-white relative overflow-hidden select-none">
+    <main className="hidden lg:flex lg:flex-col min-h-screen w-full max-w-none bg-black text-white relative overflow-hidden select-none px-0 mx-0">
       {/* Header */}
       <Head activeTab="teams" />
 
@@ -118,13 +118,13 @@ export default function TeamSection({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 lg:px-8 xl:px-12 py-2 scale-[0.82] origin-center -my-6 lg:-my-10">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-between w-full max-w-none px-0 pt-4 pb-0">
         {/* Header Title ("TEAM NAME") */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative w-[250px] md:w-[330px] lg:w-[410px] xl:w-[460px] aspect-[575/79] mb-2 lg:mb-4"
+          className="relative w-[280px] md:w-[360px] lg:w-[440px] xl:w-[500px] aspect-[575/79] my-2"
         >
           {teamName === "TEAM NAME" ? (
             <Image
@@ -142,8 +142,8 @@ export default function TeamSection({
           )}
         </motion.div>
 
-        {/* Cards Grid */}
-        <div className="w-full max-w-[1120px] mx-auto grid grid-cols-4 items-end gap-2 lg:gap-3 xl:gap-5 pt-2">
+        {/* Cards Grid — Flush edge to edge (px-0) */}
+        <div className="w-full max-w-none px-0 grid grid-cols-4 items-end gap-1 lg:gap-2">
           {members.map((member, index) => {
             const isSilhouetteLeft = member.layout === "silhouette-left";
 
@@ -153,12 +153,12 @@ export default function TeamSection({
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.12 }}
-                whileHover={{ scale: 1.025, y: -6 }}
-                className="flex flex-col items-center group cursor-pointer"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="flex flex-col items-center group cursor-pointer w-full"
               >
                 {/* Main Card */}
                 <div
-                  className={`relative w-full ${member.aspectRatio} rounded-t-sm overflow-hidden flex items-end justify-between transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_12px_40px_rgba(236,72,153,0.25)]`}
+                  className={`relative w-full scale-[1.02] ${member.aspectRatio} rounded-t-sm overflow-hidden flex items-end justify-between transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_12px_40px_rgba(236,72,153,0.25)]`}
                 >
                   {/* Card Gradient SVG Background */}
                   <div className="absolute inset-0 z-0">
@@ -175,18 +175,18 @@ export default function TeamSection({
 
                   {/* Card Content Overlay */}
                   <div className="relative z-10 w-full h-full flex items-end justify-between p-2 lg:p-3 xl:p-4">
-                    {/* Left Section (Silhouette or Text depending on layout) */}
+                    {/* Left Section */}
                     {isSilhouetteLeft ? (
                       /* Silhouette on Left */
-                      <div className="relative h-[82%] w-[52%] flex items-end justify-center">
-                        {/* Brain Scribble over head */}
-                        <div className="absolute -top-3 lg:-top-4 left-[10%] w-5 h-5 lg:w-7 lg:h-7 xl:w-8 xl:h-8 z-20">
+                      <div className="relative h-[86%] w-[54%] flex items-end justify-center">
+                        {/* Brain Scribble INSIDE head outline */}
+                        <div className="absolute top-[18%] left-[30%] w-6 h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 z-20 pointer-events-none">
                           <Image
                             src={member.scribble}
                             alt=""
                             fill
                             unoptimized
-                            className="object-contain"
+                            className="object-contain opacity-95"
                           />
                         </div>
                         {/* Silhouette Image */}
@@ -203,8 +203,8 @@ export default function TeamSection({
                       </div>
                     ) : (
                       /* Text on Left */
-                      <div className="flex flex-col justify-center items-start text-left w-[48%] pl-1 lg:pl-2 xl:pl-3 mb-4 lg:mb-8 xl:mb-10 z-20 space-y-1">
-                        <div className="font-bold text-white text-base lg:text-lg xl:text-xl leading-tight tracking-wide">
+                      <div className="flex flex-col justify-center items-start text-left w-[48%] pl-2 lg:pl-3 xl:pl-4 mb-6 lg:mb-10 xl:mb-14 z-20 space-y-1">
+                        <div className="font-bold text-white text-base lg:text-xl xl:text-2xl leading-tight tracking-wide">
                           {member.name.split(" ").map((word, i) => (
                             <span key={i} className="block">
                               {word}
@@ -217,11 +217,11 @@ export default function TeamSection({
                       </div>
                     )}
 
-                    {/* Right Section (Text or Silhouette depending on layout) */}
+                    {/* Right Section */}
                     {isSilhouetteLeft ? (
                       /* Text on Right */
-                      <div className="flex flex-col justify-center items-start text-left w-[48%] pr-1 lg:pr-2 xl:pr-3 mb-4 lg:mb-8 xl:mb-10 z-20 space-y-1">
-                        <div className="font-bold text-white text-base lg:text-lg xl:text-xl leading-tight tracking-wide">
+                      <div className="flex flex-col justify-center items-start text-left w-[48%] pr-2 lg:pr-3 xl:pr-4 mb-6 lg:mb-10 xl:mb-14 z-20 space-y-1">
+                        <div className="font-bold text-white text-base lg:text-xl xl:text-2xl leading-tight tracking-wide">
                           {member.name.split(" ").map((word, i) => (
                             <span key={i} className="block">
                               {word}
@@ -234,15 +234,15 @@ export default function TeamSection({
                       </div>
                     ) : (
                       /* Silhouette on Right */
-                      <div className="relative h-[82%] w-[52%] flex items-end justify-center">
-                        {/* Brain Scribble over head */}
-                        <div className="absolute -top-3 lg:-top-4 right-[10%] w-5 h-5 lg:w-7 lg:h-7 xl:w-8 xl:h-8 z-20">
+                      <div className="relative h-[86%] w-[54%] flex items-end justify-center">
+                        {/* Brain Scribble INSIDE head outline */}
+                        <div className="absolute top-[18%] right-[30%] w-6 h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 z-20 pointer-events-none">
                           <Image
                             src={member.scribble}
                             alt=""
                             fill
                             unoptimized
-                            className="object-contain"
+                            className="object-contain opacity-95"
                           />
                         </div>
                         {/* Silhouette Image */}
@@ -262,7 +262,7 @@ export default function TeamSection({
                 </div>
 
                 {/* Bottom Shadow / Reflection Shape */}
-                <div className="relative w-full h-8 lg:h-11 xl:h-13 -mt-1 pointer-events-none opacity-80 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="relative w-full h-8 lg:h-12 xl:h-16 -mt-1 pointer-events-none opacity-80 transition-opacity duration-300 group-hover:opacity-100">
                   <Image
                     src={member.reflectionBg}
                     alt=""

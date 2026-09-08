@@ -9,71 +9,95 @@ export const TEAM_OPTIONS = [
   {
     id: "build-your-team",
     icon: "/teamup/image 24.png",
-    textImg: "/teamup/BUILD YOUR TEAM.png",
-    alt: "BUILD YOUR TEAM",
+    label: "/teamup/BUILD YOUR TEAM.png",
+    alt: "Build your team",
     href: "/teamup/build",
   },
   {
     id: "join-a-team",
     icon: "/teamup/image 25.png",
-    textImg: "/teamup/JOIN A TEAM.png",
-    alt: "JOIN A TEAM",
+    label: "/teamup/JOIN A TEAM.png",
+    alt: "Join a team",
     href: "/teamup/join",
   },
 ];
 
+const panelMotion = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function TeamUp() {
   return (
-    <main className="hidden min-h-screen w-full overflow-hidden bg-black text-white lg:flex lg:flex-col select-none">
-      {/* <Head activeTab="team-up" /> */}
+    <main
+      id="team-up"
+      className="relative isolate flex min-h-screen w-full flex-col overflow-hidden bg-black text-white"
+    >
+      <Head activeTab="team-up" />
 
-      <div className="grid flex-1 grid-cols-5 items-center gap-8 px-8 pb-8 pt-2 xl:gap-12 xl:px-12 xl:pb-10">
-        <section className="col-span-3 flex h-screen items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="relative aspect-[760/904] h-full max-h-[calc(100vh-6rem)] w-auto max-w-full"
-          >
+      <div className="relative z-10 grid flex-1 grid-cols-1 items-center gap-8 px-5 pb-10 sm:px-8 md:gap-10 md:px-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:gap-[clamp(2rem,5vw,6rem)] lg:px-[clamp(2.5rem,5vw,7rem)] lg:pb-[clamp(2.5rem,5vh,5rem)] lg:pt-2">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={panelMotion}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="flex min-h-[18rem] items-end justify-center lg:min-h-0 lg:justify-start"
+        >
+          <div className="relative aspect-[760/904] w-full max-w-[47.5rem] lg:w-[min(100%,47.5rem)]">
             <Image
               src="/teamup/left_artwork.png"
-              alt="People reaching together around a team puzzle"
+              alt="Hands joining puzzle pieces to form a team"
               fill
               priority
-              unoptimized
-              className="object-contain"
+              sizes="(min-width: 1024px) 52vw, 92vw"
+              className="object-contain object-bottom"
             />
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
 
-        <section className="col-span-2 flex h-screen items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex aspect-[522/834] h-full max-h-[calc(100vh-7rem)] w-auto max-w-full flex-col justify-center rounded-xl border border-pink-600 px-[10%] shadow-[0_0_32px_rgba(236,72,153,0.12)] xl:rounded-2xl"
-          >
-            <div className="flex flex-col gap-8 xl:gap-10">
-              {TEAM_OPTIONS.map((option) => (
-                <Link key={option.id} href={option.href} className="group block">
-                  <motion.div
-                    whileHover={{ scale: 1.03, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.2 }}
-                    className="flex aspect-[278/104] w-full flex-col items-center justify-center gap-3 rounded-lg border border-pink-600 px-4 transition-colors duration-300 group-hover:bg-pink-950/20 xl:gap-4 xl:rounded-xl"
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={panelMotion}
+          transition={{ duration: 0.55, delay: 0.12, ease: "easeOut" }}
+          className="flex items-center justify-center lg:justify-end"
+        >
+          <div className="flex aspect-[522/834] min-h-[31rem] w-full max-w-[32.625rem] flex-col justify-center rounded-xl border border-pink-600/90 px-[14%] py-10 shadow-[0_0_32px_rgba(236,72,153,0.13)] sm:min-h-[34rem] sm:rounded-2xl lg:min-h-0">
+            <div className="flex flex-col gap-[clamp(1.5rem,4vh,3rem)]">
+              {TEAM_OPTIONS.map((option, index) => (
+                <motion.div
+                  key={option.id}
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: 0.22 + index * 0.1 }}
+                >
+                  <Link
+                    href={option.href}
+                    aria-label={option.alt}
+                    className="group block rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-300"
                   >
-                    <div className="relative aspect-square w-[18%]">
-                      <Image src={option.icon} alt="" fill unoptimized className="object-contain" />
-                    </div>
-                    <div className="relative aspect-[278/37] w-[82%]">
-                      <Image src={option.textImg} alt={option.alt} fill unoptimized className="object-contain" />
-                    </div>
-                  </motion.div>
-                </Link>
+                    <motion.div
+                      whileHover={{ scale: 1.025, y: -3 }}
+                      whileTap={{ scale: 0.985 }}
+                      transition={{ duration: 0.2 }}
+                      className="flex aspect-[371/139] w-full flex-col items-center justify-center gap-[clamp(0.45rem,1.2vw,0.8rem)] rounded-lg border border-pink-600/90 px-5 py-4 transition-colors duration-200 group-hover:bg-pink-500/10 sm:rounded-xl"
+                    >
+                      <div className="relative aspect-square w-[16%] min-w-8">
+                        <Image src={option.icon} alt="" fill className="object-contain" />
+                      </div>
+                      <div className="relative aspect-[307/34] w-[83%]">
+                        <Image src={option.label} alt={option.alt} fill className="object-contain" />
+                      </div>
+                    </motion.div>
+                  </Link>
+                </motion.div>
               ))}
             </div>
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
       </div>
     </main>
   );
