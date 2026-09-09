@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 type Letter = {
@@ -68,10 +69,10 @@ const menu: MenuItem[] = [
 ];
 
 export default function SideMenu() {
-  const scroll = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-    });
+  const router = useRouter();
+
+  const navigate = (id: string) => {
+    router.push(`/home#${id}`);
   };
 
   return (
@@ -79,8 +80,8 @@ export default function SideMenu() {
       {menu.map((item) => (
         <motion.button
           key={item.id}
-          onClick={() => scroll(item.id)}
-          className={`fixed z-40 hidden lg:flex ${item.className}`}
+          onClick={() => navigate(item.id)}
+          className={`absolute z-40 hidden lg:flex ${item.className}`}
           initial={{
             opacity: 0,
             y: 20,

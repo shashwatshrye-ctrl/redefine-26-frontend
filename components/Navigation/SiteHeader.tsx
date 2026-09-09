@@ -15,10 +15,10 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
-  { label: "Timeline", href: "/#timeline", activeTab: "timeline", img: "/tracks/TIMELINE.svg", width: "135px" },
-  { label: "Tracks", href: "/#tracks", activeTab: "tracks", img: "/tracks/TRACKS.svg", width: "118px" },
-  { label: "Team Up", href: "/#team-up", activeTab: "team-up", img: "/tracks/TEAM UP.svg", width: "118px" },
-  { label: "FAQ", href: "/#faq", activeTab: "faq", img: "/tracks/FAQ.svg", width: "70px" },
+  { label: "Timeline", href: "#timeline", activeTab: "timeline", img: "/tracks/TIMELINE.svg", width: "135px" },
+  { label: "Tracks", href: "#tracks", activeTab: "tracks", img: "/tracks/TRACKS.svg", width: "118px" },
+  { label: "Team Up", href: "#team-up", activeTab: "team-up", img: "/tracks/TEAM UP.svg", width: "118px" },
+  { label: "FAQ", href: "#faq", activeTab: "faq", img: "/tracks/FAQ.svg", width: "70px" },
 ];
 
 export default function SiteHeader() {

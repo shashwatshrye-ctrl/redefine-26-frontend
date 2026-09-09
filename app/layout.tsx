@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import PageTransition from "@/components/Providers/PageTransition";
 
 export const metadata: Metadata = {
   title: "Redefine",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white antialiased">{children}</body>
+      <body className="bg-black text-white antialiased">
+        <PageTransition>{children}</PageTransition>
+      </body>
     </html>
   );
 }
