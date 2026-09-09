@@ -21,7 +21,7 @@ type MenuItem = {
 const menu: MenuItem[] = [
   {
     id: "timeline",
-    className: "left-[10%] top-[47%]",
+    className: "left-[6%] top-[22%] md:left-[10%] md:top-[42%]",
     letters: [
       { src: "/redefine-2026/T.svg", alt: "T", rotate: -6 },
       { src: "/redefine-2026/I.svg", alt: "I", rotate: 3, y: -5 },
@@ -35,7 +35,7 @@ const menu: MenuItem[] = [
   },
   {
     id: "faq",
-    className: "left-[15%] bottom-[20%]",
+    className: "left-[6%] top-[36%] md:left-[15%] md:bottom-[25%]",
     letters: [
       { src: "/redefine-2026/F.svg", alt: "F", rotate: -6 },
       { src: "/redefine-2026/A.svg", alt: "A", rotate: 5, y: -2 },
@@ -44,7 +44,7 @@ const menu: MenuItem[] = [
   },
   {
     id: "tracks",
-    className: "right-[15%] top-[42%]",
+    className: "right-[6%] top-[22%] md:right-[15%] md:top-[37%]",
     letters: [
       { src: "/redefine-2026/T.svg", alt: "T", rotate: -5 },
       { src: "/redefine-2026/R.svg", alt: "R", rotate: 4 },
@@ -56,7 +56,7 @@ const menu: MenuItem[] = [
   },
   {
     id: "team-up",
-    className: "right-[15%] bottom-[23%]",
+    className: "right-[6%] top-[29%] md:right-[15%] md:bottom-[34%]",
     letters: [
       { src: "/redefine-2026/T.svg", alt: "T", rotate: -5 },
       { src: "/redefine-2026/E.svg", alt: "E", rotate: 4 },
@@ -81,7 +81,7 @@ export default function SideMenu() {
         <motion.button
           key={item.id}
           onClick={() => navigate(item.id)}
-          className={`absolute z-40 hidden lg:flex ${item.className}`}
+          className={`absolute z-40 flex ${item.className}`}
           initial={{
             opacity: 0,
             y: 20,
@@ -94,22 +94,14 @@ export default function SideMenu() {
             duration: 0.8,
           }}
         >
-          <div className="flex items-end gap-[1px]">
+          <div className="flex items-end gap-[1px] lg:gap-[2px]">
             {item.letters.map((letter, i) => (
               <motion.div
                 key={i}
-                className="relative h-14 w-10"
+                className="relative h-8 w-[22px] sm:h-9 sm:w-6 md:h-10 md:w-7 lg:h-14 lg:w-10"
                 style={{
                   rotate: letter.rotate ?? 0,
                   y: letter.y ?? 0,
-                }}
-                whileHover={{
-                  y: -6,
-                  rotate: (letter.rotate ?? 0) + 8,
-                  scale: 1.18,
-                  transition: {
-                    duration: 0.15,
-                  },
                 }}
               >
                 <Image
