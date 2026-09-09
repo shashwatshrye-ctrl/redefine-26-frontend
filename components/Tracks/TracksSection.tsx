@@ -182,11 +182,11 @@ export default function TracksSection() {
   const [mobileHoveredIdx, setMobileHoveredIdx] = useState<number | null>(null);
 
   return (
-    <div className="w-full flex flex-col items-center pt-0 pb-2 select-none overflow-hidden">
+    <div className="relative w-full h-full flex flex-col items-center justify-center select-none overflow-hidden">
       {/* Mobile/Tablet Fan Layout (< lg) */}
-      <div className="lg:hidden flex flex-col items-center justify-center w-full py-4 relative select-none">
+      <div className="lg:hidden flex flex-col items-center justify-center w-full h-full py-2 relative select-none">
         {/* Fan blades wrapper with locked aspect ratio, scales smoothly across breakpoints */}
-        <div className="relative w-full aspect-[298/699] max-w-[260px] sm:max-w-[300px] md:max-w-[360px] h-auto">
+        <div className="relative w-full aspect-[298/699] max-w-[260px] sm:max-w-[300px] md:max-w-[360px] h-auto max-h-full">
           {/* Background Polygon */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -205,6 +205,7 @@ export default function TracksSection() {
             const isAnyHovered = mobileHoveredIdx !== null;
             const hover = getMobileHover(i, tracks.length);
             const align = getMobileAlign(i, tracks.length);
+            const stripOnly = track.id === 1 || track.id === 6;
 
             return (
               <motion.div
@@ -225,7 +226,7 @@ export default function TracksSection() {
                 animate={{
                   x: isHovered ? hover.x : 0,
                   y: isHovered ? hover.y : 0,
-                  scale: isHovered ? 1.03 : 1,
+                  scale: stripOnly ? 1 : (isHovered ? 1.03 : 1),
                   opacity: isAnyHovered && !isHovered ? 0.65 : 1,
                   filter: isAnyHovered && !isHovered ? "brightness(0.85)" : "brightness(1)",
                 }}
@@ -233,14 +234,20 @@ export default function TracksSection() {
                 className="absolute origin-left cursor-pointer select-none"
               >
                 <div className="relative w-full h-full">
-                  <Image
-                    src={track.mobileBlade}
-                    alt=""
-                    fill
-                    priority
-                    draggable={false}
-                    className="object-contain pointer-events-none"
-                  />
+                  <motion.div
+                    className="absolute inset-0"
+                    animate={{ scale: stripOnly && isHovered ? 1.03 : 1 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 24 }}
+                  >
+                    <Image
+                      src={track.mobileBlade}
+                      alt=""
+                      fill
+                      priority
+                      draggable={false}
+                      className="object-contain pointer-events-none"
+                    />
+                  </motion.div>
 
                   {/* Title overlay — font size follows the blade image scale,
                       so it's responsive without a separate breakpoint value */}
@@ -305,13 +312,15 @@ export default function TracksSection() {
         </div>
       </div>
 
-      {/* Desktop Fan Layout (>= lg) — unchanged */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[min(95vw,1450px)] max-w-[1450px]">
-        <div className="relative w-full aspect-[1432/611] max-h-[620px]">
+      {/* Desktop Fan Layout (>= lg) */}
+      <div className="hidden lg:flex flex-col items-center justify-center w-full h-full">
+        <div className="relative w-[min(95vw,1450px)] max-w-[1450px] h-full flex flex-col justify-center">
+          <div className="relative flex-1 min-h-0 w-full">
           {tracks.map((track, i) => {
             const isHovered = hoveredIdx === i;
             const isAnyHovered = hoveredIdx !== null;
             const hover = getDesktopHover(i, tracks.length);
+            const stripOnly = track.id === 1 || track.id === 6;
 
             return (
               <motion.div
@@ -326,7 +335,7 @@ export default function TracksSection() {
                 animate={{
                   x: isHovered ? hover.x : 0,
                   y: isHovered ? hover.y : 0,
-                  scale: isHovered ? 1.03 : 1,
+                  scale: stripOnly ? 1 : (isHovered ? 1.03 : 1),
                   opacity: isAnyHovered && !isHovered ? 0.65 : 1,
                   filter: isAnyHovered && !isHovered ? "brightness(0.85) blur(0px)" : "brightness(1) blur(0px)",
                 }}
@@ -334,14 +343,20 @@ export default function TracksSection() {
                 className="absolute bottom-0 h-[101%] origin-bottom cursor-pointer select-none"
               >
                 <div className="relative w-full h-full">
-                  <Image
-                    src={track.bladeSvg}
-                    alt=""
-                    fill
-                    priority
-                    draggable={false}
-                    className="object-contain pointer-events-none"
-                  />
+                  <motion.div
+                    className="absolute inset-0"
+                    animate={{ scale: stripOnly && isHovered ? 1.03 : 1 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 24 }}
+                  >
+                    <Image
+                      src={track.bladeSvg}
+                      alt=""
+                      fill
+                      priority
+                      draggable={false}
+                      className="object-contain pointer-events-none"
+                    />
+                  </motion.div>
 
                   <div
                     style={{
@@ -366,20 +381,21 @@ export default function TracksSection() {
           })}
         </div>
 
-        <div className="flex items-center justify-center gap-8 -mt-2 z-20 select-none pointer-events-none">
-          <div className="relative w-[240px] aspect-[508/451]">
+        <div className="flex items-center justify-center gap-6 shrink-0 z-20 select-none pointer-events-none pb-1">
+          <div className="relative w-[200px] xl:w-[220px] aspect-[508/451]">
             <Image src="/tracks/image 16.png" alt="" fill priority draggable={false} className="object-contain" />
           </div>
 
-          <div className="relative w-[300px] h-[205px]">
+          <div className="relative w-[240px] xl:w-[270px] h-[164px] xl:h-[185px]">
             <Image src="/tracks/Brain.svg" alt="Brain Scribble" fill priority draggable={false} className="object-contain" />
           </div>
 
-          <div className="relative w-[240px] aspect-[382/258]">
+          <div className="relative w-[200px] xl:w-[220px] aspect-[382/258]">
             <Image src="/tracks/image 15.png" alt="" fill priority draggable={false} className="object-contain" />
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

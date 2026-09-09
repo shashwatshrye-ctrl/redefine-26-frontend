@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import SectionPage from "@/components/Layout/SectionPage";
-import Timeline from "@/components/Timeline/timeline";
+import TracksSection from "@/components/Tracks/TracksSection";
 
 export const metadata: Metadata = {
-  title: "Timeline",
+  title: "Tracks",
 };
 
-export default function TimelinePage() {
+export default function TracksPage() {
   return (
     <SectionPage>
-      <Timeline />
+      <TracksSection />
     </SectionPage>
   );
 }

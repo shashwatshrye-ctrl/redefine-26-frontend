@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 type Letter = {
@@ -32,7 +33,6 @@ const menu: MenuItem[] = [
       { src: "/redefine-2026/E.svg", alt: "E", rotate: 2, y: -4 },
     ],
   },
-
   {
     id: "faq",
     className: "left-[15%] bottom-[20%]",
@@ -42,7 +42,6 @@ const menu: MenuItem[] = [
       { src: "/redefine-2026/Q.svg", alt: "Q", rotate: -8 },
     ],
   },
-
   {
     id: "tracks",
     className: "right-[15%] top-[42%]",
@@ -55,7 +54,6 @@ const menu: MenuItem[] = [
       { src: "/redefine-2026/S.svg", alt: "S", rotate: 5 },
     ],
   },
-
   {
     id: "team-up",
     className: "right-[15%] bottom-[23%]",
@@ -71,12 +69,10 @@ const menu: MenuItem[] = [
 ];
 
 export default function SideMenu() {
-  console.log("SideMenu Render");
-  const scroll = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-    });
-    
+  const router = useRouter();
+
+  const navigate = (id: string) => {
+    router.push(`/${id}`);
   };
 
   return (
@@ -84,8 +80,8 @@ export default function SideMenu() {
       {menu.map((item) => (
         <motion.button
           key={item.id}
-          onClick={() => scroll(item.id)}
-          className={`fixed z-40 hidden lg:flex ${item.className}`}
+          onClick={() => navigate(item.id)}
+          className={`absolute z-40 hidden lg:flex ${item.className}`}
           initial={{
             opacity: 0,
             y: 20,
@@ -129,7 +125,6 @@ export default function SideMenu() {
                 />
               </motion.div>
             ))}
-            
           </div>
         </motion.button>
       ))}

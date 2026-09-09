@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-// import Head from "../Navigation/head";
 
 type Phase = {
   id: number;
@@ -37,11 +36,10 @@ function NotebookLines({ count = 7, className = "" }: { count?: number; classNam
 
 export default function Timeline() {
   return (
-    <main className="relative isolate min-h-screen w-full overflow-hidden bg-black text-white flex flex-col justify-between pt-24 pb-12">
-      {/* <Head activeTab="timeline" /> */}
+    <section className="relative isolate h-full w-full overflow-hidden bg-black text-white flex flex-col justify-between p-[clamp(0.5rem,1.5vh,1.25rem)]">
 
       {/* Desktop Collage Container (lg and up) */}
-      <div className="relative w-[85vw] max-w-[1700px] aspect-[16/9.5] min-h-[680px] hidden lg:block select-none overflow-hidden mx-auto my-auto px-4">
+      <div className="relative mx-auto my-auto hidden lg:block select-none overflow-hidden h-full w-auto max-w-full aspect-[16/9.5]">
         
         {/* Center TIMELINE Title */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
@@ -334,8 +332,8 @@ export default function Timeline() {
       </div>
 
       {/* Mobile / Tablet Layout (< lg) */}
-      <div className="relative w-full max-w-xl mx-auto px-5 py-8 lg:hidden flex flex-col items-center gap-8 z-10">
-        <div className="relative w-[75vw] max-w-[340px] aspect-[565/109] my-4">
+      <div className="relative w-full max-w-xl mx-auto px-5 py-2 lg:hidden flex flex-col items-center h-full z-10 gap-2">
+        <div className="relative w-[60vw] max-w-[320px] aspect-[565/109] shrink-0">
           <Image
             src="/timeline/TIMELINE.svg"
             alt="TIMELINE"
@@ -346,26 +344,25 @@ export default function Timeline() {
         </div>
 
         {/* Vertical timeline connecting line */}
-        <div className="relative w-full flex flex-col gap-6 items-center">
+        <div className="relative w-full flex-1 min-h-0 flex flex-col gap-2 items-center">
           <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white/40 -translate-x-1/2 pointer-events-none" />
 
           {phases.map((phase, idx) => (
             <motion.div
               key={phase.id}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="relative w-full max-w-sm bg-[#F9CDD7] rounded-md shadow-xl p-5 flex flex-col items-center justify-center border border-pink-300/30"
+              className="relative flex-1 min-h-0 w-full max-w-sm bg-[#F9CDD7] rounded-md shadow-xl border border-pink-300/30 flex flex-col items-center justify-center overflow-hidden"
               style={{
                 transform: `rotate(${idx % 2 === 0 ? '-2deg' : '2deg'})`,
               }}
             >
-              <Pin className="absolute top-3 left-1/2 -translate-x-1/2" />
-              <div className="relative w-full h-10 mt-2">
+              <Pin className="absolute top-2 left-1/2 -translate-x-1/2" />
+              <div className="relative w-[45%] h-[55%] min-h-0">
                 <Image src={phase.asset} alt={phase.label} fill className="object-contain" />
               </div>
-              <p className="text-xs font-semibold text-black mt-2 text-center whitespace-nowrap">
+              <p className="text-[10px] sm:text-xs font-semibold text-black mt-1 text-center whitespace-nowrap shrink-0">
                 {phase.date}
               </p>
             </motion.div>
@@ -373,7 +370,7 @@ export default function Timeline() {
         </div>
       </div>
 
-    </main>
+    </section>
   );
 }
 
