@@ -37,7 +37,7 @@ function FieldLabel({ icon, label, alt }: { icon: string; label: string; alt: st
 
 function TeamIllustration() {
   return (
-    <div className="relative aspect-[760/904] w-full max-w-[47.5rem] overflow-hidden">
+    <div className="relative h-full w-auto max-w-full aspect-[760/904] overflow-hidden">
       <Image
         src="/teamup/left_artwork.png"
         alt="Hands joining puzzle pieces to form a team"
@@ -100,7 +100,7 @@ function PanelFrame({
   onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
 }) {
   const className =
-    "flex aspect-[526/834] min-h-[31rem] w-full max-w-[32.875rem] flex-col rounded-xl border border-pink-600/90 px-[clamp(1.5rem,6vw,4rem)] pb-[clamp(2rem,5vw,3.5rem)] pt-[clamp(1.25rem,2vw,2rem)] shadow-[0_0_32px_rgba(236,72,153,0.13)] sm:min-h-[34rem] sm:rounded-2xl lg:min-h-0";
+    "flex h-full min-h-0 w-full max-w-[32.875rem] flex-col overflow-y-auto rounded-xl border border-pink-600/90 px-[clamp(1.25rem,5vw,3rem)] pb-[clamp(1.5rem,4vh,2.5rem)] pt-[clamp(1rem,2vh,1.5rem)] shadow-[0_0_32px_rgba(236,72,153,0.13)] sm:rounded-2xl";
 
   if (onSubmit) {
     return (
@@ -189,16 +189,16 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
 
   return (
     <section
-      className="relative isolate flex min-h-screen w-full flex-col overflow-hidden bg-black text-white"
+      className="relative isolate flex h-full w-full flex-col overflow-hidden bg-black text-white"
     >
-      <div className="relative z-10 grid flex-1 grid-cols-1 items-center gap-8 px-5 pb-10 sm:px-8 md:gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:gap-[clamp(1rem,2vw,2rem)] lg:px-[clamp(2rem,5vw,6rem)] lg:pb-[clamp(2.5rem,5vh,5rem)] lg:pt-2">
+      <div className="relative z-10 grid h-full grid-cols-1 grid-rows-[auto_minmax(0,1fr)] items-center gap-3 px-5 py-3 sm:px-8 md:gap-6 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:grid-rows-1 lg:gap-[clamp(1rem,2vw,2rem)] lg:px-[clamp(2rem,5vw,6rem)] lg:py-4">
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={reveal}
           transition={{ duration: 0.55, ease: "easeOut" }}
-          className="flex min-h-[18rem] items-end justify-center lg:min-h-0 lg:justify-start"
+          className="flex h-[24vh] min-h-0 items-center justify-center lg:h-full lg:items-end lg:justify-start"
         >
           <TeamIllustration />
         </motion.section>
@@ -209,7 +209,7 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
           viewport={{ once: true, amount: 0.2 }}
           variants={reveal}
           transition={{ duration: 0.55, delay: 0.12, ease: "easeOut" }}
-          className="flex items-center justify-center lg:justify-end"
+          className="flex min-h-0 items-center justify-center h-full lg:justify-end"
         >
           <AnimatePresence mode="wait">
             {step === "choose" && (
@@ -219,10 +219,10 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -24 }}
                 transition={{ duration: 0.25 }}
-                className="w-full max-w-[32.875rem]"
+                className="h-full w-full max-w-[32.875rem] min-h-0"
               >
-                <div className="flex aspect-[522/834] min-h-[31rem] w-full flex-col justify-center rounded-xl border border-pink-600/90 px-[14%] py-10 shadow-[0_0_32px_rgba(236,72,153,0.13)] sm:min-h-[34rem] sm:rounded-2xl lg:min-h-0">
-                  <div className="flex flex-col gap-[clamp(1.5rem,4vh,3rem)]">
+                <div className="flex h-full min-h-0 w-full flex-col justify-center overflow-y-auto rounded-xl border border-pink-600/90 px-[14%] py-6 shadow-[0_0_32px_rgba(236,72,153,0.13)] sm:rounded-2xl">
+                  <div className="flex flex-col gap-[clamp(1rem,3vh,2.25rem)]">
                     <KindButton
                       icon="/teamup/image 24.png"
                       label="/teamup/BUILD YOUR TEAM.png"
@@ -247,10 +247,10 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -24 }}
                 transition={{ duration: 0.25 }}
-                className="w-full max-w-[32.875rem]"
+                className="h-full w-full max-w-[32.875rem] min-h-0"
               >
                 <PanelFrame onSubmit={handleFinalize}>
-                  <div className="flex flex-1 flex-col gap-[clamp(1.5rem,3.5vh,2.5rem)]">
+                  <div className="flex flex-1 flex-col gap-[clamp(0.75rem,2.5vh,1.75rem)]">
                     <div className="flex flex-col items-center gap-4">
                       <div className="relative h-12 w-12">
                         <Image src="/buildteam/image 24.svg" alt="" fill className="object-contain" />
@@ -320,10 +320,10 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -24 }}
                 transition={{ duration: 0.25 }}
-                className="w-full max-w-[32.875rem]"
+                className="h-full w-full max-w-[32.875rem] min-h-0"
               >
                 <PanelFrame onSubmit={handleJoin}>
-                  <div className="flex flex-1 flex-col items-center gap-[clamp(1.5rem,3.5vh,2.5rem)]">
+                  <div className="flex flex-1 flex-col items-center gap-[clamp(0.75rem,2.5vh,1.75rem)]">
                     <div className="space-y-2 w-full">
                       <div className="flex items-center gap-3">
                         <div className="relative h-9 w-9 shrink-0">
@@ -366,7 +366,7 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
         <button
           type="button"
           onClick={back}
-          className="absolute left-4 top-28 z-20 flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/70 transition hover:text-white hover:bg-pink-500/10 sm:left-8 md:top-32"
+          className="absolute left-4 top-28 z-20 flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/70 transition hover:text-white hover:bg-pink-500/10 sm:left-8 lg:top-36"
         >
           <span aria-hidden>&larr;</span> Back
         </button>

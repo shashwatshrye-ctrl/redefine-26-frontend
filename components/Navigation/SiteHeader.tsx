@@ -41,9 +41,9 @@ export default function SiteHeader() {
         className="sticky top-0 z-50 m-0 flex w-full max-w-none items-center justify-between border-b border-white/5 bg-black/95 px-5 py-5 backdrop-blur-md sm:px-8 md:px-12 md:py-6 lg:px-10 lg:py-7 xl:px-16"
       >
         {/* Left: Logo */}
-        <Link href="/" className="relative h-[60px] w-[140px] shrink-0 transition-transform duration-300 hover:scale-105 sm:h-[72px] sm:w-[165px] md:h-[82px] md:w-[205px] lg:h-[82px] lg:w-[190px] xl:h-[90px] xl:w-[225px]">
+        <Link href="/" className="relative h-12 w-12 shrink-0 transition-transform duration-300 hover:scale-105 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-[70px] lg:w-[70px] xl:h-20 xl:w-20">
           <Image
-            src="/redefine-2026/logo.svg"
+            src="/redefine-2026/redefine.jpeg"
             alt="Redefine Logo"
             fill
             priority

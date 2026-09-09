@@ -49,7 +49,7 @@ export default function TeamSection({
 }: TeamSectionProps) {
   return (
     <section
-      className="relative flex min-h-screen w-full max-w-none flex-col items-center bg-black text-white select-none overflow-hidden px-0 mx-0"
+      className="relative flex h-full w-full max-w-none flex-col items-center justify-center bg-black text-white select-none overflow-hidden px-0 mx-0"
     >
       {/* Decorative background vectors */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -64,14 +64,14 @@ export default function TeamSection({
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center w-full max-w-none px-0 pt-8 pb-0">
+      <div className="relative z-10 flex h-full min-h-0 w-full max-w-none flex-col items-center px-0 pt-6 pb-2">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative w-[200px] sm:w-[260px] md:w-[360px] lg:w-[440px] xl:w-[500px] aspect-[575/79] my-2"
+          className="relative w-[200px] sm:w-[260px] md:w-[360px] lg:w-[440px] xl:w-[500px] aspect-[575/79] shrink-0"
         >
           {teamName === "TEAM NAME" ? (
             <Image src="/team/TEAM NAME.png" alt="Team Name" fill priority unoptimized className="object-contain" />
@@ -83,7 +83,7 @@ export default function TeamSection({
         </motion.div>
 
         {/* Panel row */}
-        <div className="relative mt-[clamp(2rem,6vh,9rem)] w-full h-[320px] sm:h-[400px] md:h-[480px] lg:h-[600px] xl:h-[660px]">
+        <div className="relative mt-[clamp(1rem,3vh,3.5rem)] w-full flex-1 min-h-0">
           <div
             className="absolute bottom-0 left-0 right-0 h-10 lg:h-14 z-0"
             style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.85))" }}

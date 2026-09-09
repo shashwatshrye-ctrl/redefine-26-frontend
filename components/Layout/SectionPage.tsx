@@ -5,10 +5,10 @@ import SiteHeader from "@/components/Navigation/SiteHeader";
 
 export default function SectionPage({ children }: { children: ReactNode }) {
   return (
-    <main className="relative flex w-full flex-col items-stretch overflow-x-hidden bg-black font-sans text-white">
+    <main className="relative flex h-dvh w-full flex-col overflow-hidden bg-black font-sans text-white">
       <SiteHeader />
-      {children}
-      <footer className="w-full border-t border-white/10 bg-black py-8 text-center text-sm text-white/40">
+      <div className="relative min-h-0 flex-1">{children}</div>
+      <footer className="shrink-0 border-t border-white/10 bg-black py-3 text-center text-xs text-white/40">
         &copy; {new Date().getFullYear()} Redefine &mdash; IEEE CS VIT
       </footer>
     </main>

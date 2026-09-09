@@ -50,13 +50,13 @@ function AccordionItem({
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between px-6 py-5 text-left text-base font-semibold text-white transition hover:bg-pink-500/10 md:text-lg"
+        className="flex w-full items-center justify-between px-5 py-3.5 text-left text-sm font-semibold text-white transition hover:bg-pink-500/10 md:px-6 md:py-4 md:text-base"
       >
         <span>{item.question}</span>
         <motion.span
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.2 }}
-          className="ml-4 shrink-0 text-2xl text-pink-400"
+          className="ml-4 shrink-0 text-xl text-pink-400 md:text-2xl"
         >
           +
         </motion.span>
@@ -69,7 +69,7 @@ function AccordionItem({
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
           >
-            <div className="px-6 pb-5 text-sm text-white/60 md:text-base">
+            <div className="px-5 pb-4 text-xs text-white/60 md:px-6 md:pb-5 md:text-sm">
               {item.answer}
             </div>
           </motion.div>
@@ -84,20 +84,20 @@ export default function FAQSection() {
 
   return (
     <section
-      className="relative w-full bg-black px-6 py-20 md:px-10 lg:px-16"
+      className="relative flex h-full w-full flex-col justify-center overflow-hidden bg-black px-6 py-4 md:px-10 lg:px-16"
     >
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto w-full max-w-3xl">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-10 text-center text-2xl font-bold uppercase tracking-widest text-white md:text-3xl"
+          className="mb-5 text-center text-xl font-bold uppercase tracking-widest text-white md:mb-7 md:text-2xl"
         >
           Frequently Asked Questions
         </motion.h2>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2 md:gap-2.5">
           {FAQ_DATA.map((item, idx) => (
             <motion.div
               key={idx}
