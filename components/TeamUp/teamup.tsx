@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Head from "../Navigation/head";
 
 export const TEAM_OPTIONS = [
   {
@@ -33,9 +32,8 @@ export default function TeamUp() {
       id="team-up"
       className="relative isolate flex min-h-screen w-full flex-col overflow-hidden bg-black text-white"
     >
-      <Head activeTab="team-up" />
 
-      <div className="relative z-10 grid flex-1 grid-cols-1 items-center gap-8 px-5 pb-10 sm:px-8 md:gap-10 md:px-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:gap-[clamp(2rem,5vw,6rem)] lg:px-[clamp(2.5rem,5vw,7rem)] lg:pb-[clamp(2.5rem,5vh,5rem)] lg:pt-2">
+      <div className="relative z-10 grid flex-1 grid-cols-1 items-center gap-8 px-5 pb-10 sm:px-8 md:gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:gap-[clamp(1rem,2vw,2rem)] lg:px-[clamp(2rem,5vw,6rem)] lg:pb-[clamp(2.5rem,5vh,5rem)] lg:pt-2">
         <motion.section
           initial="hidden"
           whileInView="visible"
@@ -83,7 +81,7 @@ export default function TeamUp() {
                       whileHover={{ scale: 1.025, y: -3 }}
                       whileTap={{ scale: 0.985 }}
                       transition={{ duration: 0.2 }}
-                      className="flex aspect-[371/139] w-full flex-col items-center justify-center gap-[clamp(0.45rem,1.2vw,0.8rem)] rounded-lg border border-pink-600/90 px-5 py-4 transition-colors duration-200 group-hover:bg-pink-500/10 sm:rounded-xl"
+                      className="flex aspect-[371/139] w-full flex-col items-center justify-center gap-[clamp(0.45rem,1.2vw,0.8rem)] rounded-lg border border-pink-600/90 px-5 py-4 transition duration-200 group-hover:-translate-y-1 group-hover:bg-pink-500/10 sm:rounded-xl"
                     >
                       <div className="relative aspect-square w-[16%] min-w-8">
                         <Image src={option.icon} alt="" fill className="object-contain" />

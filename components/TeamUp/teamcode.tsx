@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
-import Head from "../Navigation/head";
 
 type TeamCodeProps = {
   initialTeamCode?: string;
@@ -79,9 +78,8 @@ export default function TeamCode({ initialTeamCode = "", onDone }: TeamCodeProps
 
   return (
     <main className="relative isolate flex min-h-screen w-full flex-col overflow-hidden bg-black text-white">
-      <Head activeTab="team-up" />
 
-      <div className="relative z-10 grid flex-1 grid-cols-1 items-center gap-8 px-5 pb-10 sm:px-8 md:gap-10 md:px-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:gap-[clamp(2rem,5vw,6rem)] lg:px-[clamp(2.5rem,5vw,7rem)] lg:pb-[clamp(2.5rem,5vh,5rem)] lg:pt-2">
+      <div className="relative z-10 grid flex-1 grid-cols-1 items-center gap-8 px-5 pb-10 sm:px-8 md:gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:gap-[clamp(1rem,2vw,2rem)] lg:px-[clamp(2rem,5vw,6rem)] lg:pb-[clamp(2.5rem,5vh,5rem)] lg:pt-2">
         <motion.section
           initial="hidden"
           whileInView="visible"
@@ -132,7 +130,7 @@ export default function TeamCode({ initialTeamCode = "", onDone }: TeamCodeProps
               whileHover={{ scale: 1.015, y: -2 }}
               whileTap={{ scale: 0.985 }}
               transition={{ duration: 0.2 }}
-              className="relative mt-6 flex h-16 w-full items-center justify-center overflow-hidden rounded-xl bg-pink-400 shadow-[0_10px_25px_rgba(236,72,153,0.18)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-200"
+              className="relative mt-6 flex h-16 w-full items-center justify-center overflow-hidden rounded-xl bg-pink-400 transition-transform duration-200 hover:-translate-y-0.5 shadow-[0_10px_25px_rgba(236,72,153,0.18)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-200"
             >
               <Image src="/teamcode/DONE.svg" alt="Done" width={62} height={17} />
             </motion.button>

@@ -16,7 +16,7 @@ export default function RegisterButton() {
           scale: 0.96,
         }}
         transition={{ duration: 0.2 }}
-        className="cursor-pointer select-none"
+        className="cursor-pointer select-none transition-transform duration-200 hover:-translate-y-0.5"
       >
         <div className="relative w-[180px] md:w-[210px] lg:w-[230px] xl:w-[250px]">
           <Image

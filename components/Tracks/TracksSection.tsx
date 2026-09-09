@@ -182,9 +182,9 @@ export default function TracksSection() {
   const [mobileHoveredIdx, setMobileHoveredIdx] = useState<number | null>(null);
 
   return (
-    <div className="w-screen flex flex-col items-center pt-0 pb-2 select-none overflow-hidden">
+    <div className="w-full flex flex-col items-center pt-0 pb-2 select-none overflow-hidden">
       {/* Mobile/Tablet Fan Layout (< lg) */}
-      <div className="lg:hidden flex flex-col items-center justify-center w-full px-6 sm:px-8 py-4 relative select-none">
+      <div className="lg:hidden flex flex-col items-center justify-center w-full py-4 relative select-none">
         {/* Fan blades wrapper with locked aspect ratio, scales smoothly across breakpoints */}
         <div className="relative w-full aspect-[298/699] max-w-[260px] sm:max-w-[300px] md:max-w-[360px] h-auto">
           {/* Background Polygon */}
@@ -306,8 +306,8 @@ export default function TracksSection() {
       </div>
 
       {/* Desktop Fan Layout (>= lg) — unchanged */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-full max-w-[1050px] mt-8">
-        <div className="relative w-full aspect-[1432/611] max-h-[447px]">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[min(95vw,1450px)] max-w-[1450px]">
+        <div className="relative w-full aspect-[1432/611] max-h-[620px]">
           {tracks.map((track, i) => {
             const isHovered = hoveredIdx === i;
             const isAnyHovered = hoveredIdx !== null;
@@ -366,16 +366,16 @@ export default function TracksSection() {
           })}
         </div>
 
-        <div className="flex items-center justify-center gap-6 -mt-2 z-20 select-none pointer-events-none">
-          <div className="relative w-[180px] aspect-[508/451]">
+        <div className="flex items-center justify-center gap-8 -mt-2 z-20 select-none pointer-events-none">
+          <div className="relative w-[240px] aspect-[508/451]">
             <Image src="/tracks/image 16.png" alt="" fill priority draggable={false} className="object-contain" />
           </div>
 
-          <div className="relative w-[226px] h-[154px]">
+          <div className="relative w-[300px] h-[205px]">
             <Image src="/tracks/Brain.svg" alt="Brain Scribble" fill priority draggable={false} className="object-contain" />
           </div>
 
-          <div className="relative w-[180px] aspect-[382/258]">
+          <div className="relative w-[240px] aspect-[382/258]">
             <Image src="/tracks/image 15.png" alt="" fill priority draggable={false} className="object-contain" />
           </div>
         </div>

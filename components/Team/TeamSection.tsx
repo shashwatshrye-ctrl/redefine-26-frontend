@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Head from "../Navigation/head";
 
 export interface TeamMember {
   id: string;
@@ -50,7 +49,6 @@ export default function TeamSection({
 }: TeamSectionProps) {
   return (
     <main className="hidden lg:flex lg:flex-col min-h-screen w-full max-w-none bg-black text-white relative overflow-hidden select-none px-0 mx-0">
-      <Head activeTab="teams" />
 
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute left-0 top-[8%] w-[18vw] max-w-[260px] aspect-[162/513]">
@@ -82,7 +80,7 @@ export default function TeamSection({
         </motion.div>
 
         {/* Panel row — FIXED explicit height, cannot collapse from flex-shrink */}
-        <div className="relative w-full h-[480px] md:h-[540px] lg:h-[600px] xl:h-[660px]">
+        <div className="relative mt-[clamp(5rem,10vh,9rem)] w-full h-[480px] md:h-[540px] lg:h-[600px] xl:h-[660px]">
           <div
             className="absolute bottom-0 left-0 right-0 h-10 lg:h-14 z-0"
             style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.85))" }}

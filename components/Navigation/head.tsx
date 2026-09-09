@@ -10,9 +10,9 @@ interface HeadProps {
 
 export default function Head({ activeTab }: HeadProps) {
   return (
-    <header className="relative inset-x-0 left-0 right-0 top-0 w-full max-w-none flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-14 py-6 md:py-8 lg:py-9 z-40 bg-transparent m-0 border-b border-transparent">
+    <header className="sticky inset-x-0 left-0 right-0 w-full max-w-none flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-8 xl:px-14 py-6 md:py-8 lg:py-9 z-40 bg-transparent m-0 border-b border-transparent">
       {/* Left: Logo */}
-      <Link href="/" className="relative w-[145px] h-[62px] md:w-[185px] md:h-[72px] lg:w-[205px] lg:h-[80px] shrink-0 transition-transform hover:scale-105">
+      <Link href="/" className="relative w-[145px] h-[62px] md:w-[185px] md:h-[72px] lg:w-[170px] lg:h-[72px] xl:w-[205px] xl:h-[80px] shrink-0 transition-transform hover:scale-105">
         <Image
           src="/redefine-2026/logo.svg"
           alt="Redefine Logo"
@@ -24,10 +24,10 @@ export default function Head({ activeTab }: HeadProps) {
       </Link>
 
       {/* Center: SVG Menu Links (Visible on desktop) */}
-      <nav className="hidden md:flex items-center gap-14 lg:gap-20">
+      <nav className="hidden lg:flex items-center gap-6 lg:gap-8 xl:gap-14">
         {/* Timeline */}
         <div className="relative flex flex-col items-center">
-          <Link href="/#timeline" className="hover:opacity-75 transition-opacity duration-200">
+          <Link href="/#timeline" className="transition duration-200 hover:-translate-y-0.5 hover:opacity-75">
             <div className="relative w-[125px] h-[26px] md:w-[140px] md:h-[29px]">
               <Image src="/tracks/TIMELINE.svg" alt="Timeline" fill className="object-contain" />
             </div>
@@ -41,7 +41,7 @@ export default function Head({ activeTab }: HeadProps) {
 
         {/* Tracks */}
         <div className="relative flex flex-col items-center">
-          <Link href="/tracks" className="hover:opacity-75 transition-opacity duration-200">
+          <Link href="/tracks" className="transition duration-200 hover:-translate-y-0.5 hover:opacity-75">
             <div className="relative w-[108px] h-[26px] md:w-[120px] md:h-[29px]">
               <Image src="/tracks/TRACKS.svg" alt="Tracks" fill className="object-contain" />
             </div>
@@ -55,7 +55,7 @@ export default function Head({ activeTab }: HeadProps) {
 
         {/* Team Up */}
         <div className="relative flex flex-col items-center">
-          <Link href="/teams" className="hover:opacity-75 transition-opacity duration-200">
+          <Link href="/teams" className="transition duration-200 hover:-translate-y-0.5 hover:opacity-75">
             <div className="relative w-[108px] h-[26px] md:w-[120px] md:h-[29px]">
               <Image src="/tracks/TEAM UP.svg" alt="Team Up" fill className="object-contain" />
             </div>
@@ -69,7 +69,7 @@ export default function Head({ activeTab }: HeadProps) {
 
         {/* FAQ */}
         <div className="relative flex flex-col items-center">
-          <Link href="/#faq" className="hover:opacity-75 transition-opacity duration-200">
+          <Link href="/#faq" className="transition duration-200 hover:-translate-y-0.5 hover:opacity-75">
             <div className="relative w-[62px] h-[26px] md:w-[70px] md:h-[29px]">
               <Image src="/tracks/FAQ.svg" alt="FAQ" fill className="object-contain" />
             </div>
@@ -93,9 +93,9 @@ export default function Head({ activeTab }: HeadProps) {
             scale: 0.96,
           }}
           transition={{ duration: 0.2 }}
-          className="cursor-pointer select-none"
+          className="cursor-pointer select-none transition-transform duration-200 hover:-translate-y-0.5"
         >
-          <div className="relative w-[185px] sm:w-[215px] md:w-[255px] aspect-[2.8/1]">
+            <div className="relative w-[165px] sm:w-[190px] md:w-[205px] lg:w-[220px] xl:w-[255px] aspect-[2.8/1]">
             <Image
               src="/redefine-2026/register.svg"
               alt="Register"
