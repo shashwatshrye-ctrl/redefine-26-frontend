@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-	margin: 0;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Prevent horizontal scrollbar */
+  html,
+  body {
+    max-width: 100vw;
+  }
+}
+
+@layer utilities {
+  /* GPU acceleration for animations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  .will-change-transform-opacity {
+    will-change: transform, opacity;
+  }
 }

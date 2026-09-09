@@ -7,7 +7,7 @@ import SideMenu from "@/components/Navigation/SideMenu";
 
 export default function HomePage() {
   return (
-    <main className="relative h-screen w-screen overflow-hidden bg-black font-sans text-white">
+    <main className="relative h-screen w-full overflow-hidden bg-black font-sans text-white">
       <SplitBackground />
       <RegisterButton />
       <Navbar />

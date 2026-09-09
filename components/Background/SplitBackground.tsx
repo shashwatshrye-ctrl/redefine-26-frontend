@@ -3,7 +3,7 @@ import NoiseOverlay from "./NoiseOverlay";
 
 export default function SplitBackground() {
   return (
-    <section className="relative h-screen w-screen overflow-hidden">
+    <section className="relative h-full w-full overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -12,31 +12,35 @@ export default function SplitBackground() {
           fill
           priority
           className="object-cover select-none"
+          style={{ willChange: "transform" }}
         />
       </div>
 
       <NoiseOverlay />
 
       {/* Bottom decoration */}
-      <div className="absolute bottom-0 left-7 z-20 w-screen">
-        <Image
-          src="/redefine-2026/Homepage (4).svg"
-          alt="Homepage"
-          width={1920}
-          height={980}
-          priority
-          className="w-screen h-screen object-bottom"
-        />
+      <div className="absolute bottom-0 left-0 right-0 z-20">
+        <div className="relative mx-auto w-full max-w-[1480px]">
+          <Image
+            src="/redefine-2026/Homepage (4).svg"
+            alt="Homepage"
+            width={1480}
+            height={1024}
+            priority
+            className="w-full h-auto object-bottom"
+            style={{ willChange: "transform" }}
+          />
+        </div>
       </div>
 
       {/* REDEFINE + REIMAGINE text group */}
       <div className="absolute inset-x-0 bottom-0 z-30 flex justify-center">
-        <div className="relative h-[120vh] w-[70vw]">
+        <div className="relative h-[120vh] w-[70vw] max-w-[1000px]">
           {/* REDEFINE Group (behind human) */}
           <div className="pointer-events-none absolute left-1/2 top-[22%] -translate-x-1/2 z-10">
-            <div className="relative h-[130px] w-[650px]">
+            <div className="relative h-[100px] w-[500px] sm:h-[130px] sm:w-[650px]">
               {/* Filled shadow */}
-              <div className="absolute inset-0 translate-x-[4px] translate-y-[4px]">
+              <div className="absolute inset-0 translate-x-[3px] translate-y-[3px] sm:translate-x-[4px] sm:translate-y-[4px]">
                 <Image
                   src="/redefine-2026/solid.svg"
                   alt=""
