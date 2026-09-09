@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function BuildTeamPage() {
+export default function TeamUpPage() {
   redirect("/#team-up");
 }

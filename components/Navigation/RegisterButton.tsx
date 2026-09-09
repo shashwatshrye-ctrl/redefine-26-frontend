@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function RegisterButton() {
   return (
-    <div className="fixed top-6 right-6 z-50">
+    <div className="absolute top-6 right-6 z-50">
       {/* Animated Button */}
       <motion.button
         whileHover={{
@@ -16,7 +16,7 @@ export default function RegisterButton() {
           scale: 0.96,
         }}
         transition={{ duration: 0.2 }}
-        className="cursor-pointer select-none transition-transform duration-200 hover:-translate-y-0.5"
+        className="cursor-pointer select-none"
       >
         <div className="relative w-[180px] md:w-[210px] lg:w-[230px] xl:w-[250px]">
           <Image

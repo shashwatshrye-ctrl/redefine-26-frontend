@@ -37,7 +37,7 @@ function NotebookLines({ count = 7, className = "" }: { count?: number; classNam
 
 export default function Timeline() {
   return (
-    <main className="relative isolate min-h-screen w-full overflow-hidden bg-black text-white flex flex-col justify-between pt-24 pb-12">
+    <main id="timeline" className="relative isolate min-h-screen w-full overflow-hidden bg-black text-white flex flex-col justify-between pt-24 pb-12 scroll-mt-28 lg:scroll-mt-40">
       {/* <Head activeTab="timeline" /> */}
 
       {/* Desktop Collage Container (lg and up) */}

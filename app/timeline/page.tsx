@@ -1,6 +1,5 @@
-import Timeline from "@/components/Timeline/timeline";
-
+import { redirect } from "next/navigation";
 
 export default function TimelinePage() {
-  return <Timeline />;
+  redirect("/#timeline");
 }
