@@ -2,32 +2,35 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 interface NavLink {
   label: string;
   href: string;
-  activeTab: "timeline" | "tracks" | "team-up" | "faq";
   img: string;
   width: string;
 }
 
 const NAV_LINKS: NavLink[] = [
-  { label: "Timeline", href: "#timeline", activeTab: "timeline", img: "/tracks/TIMELINE.svg", width: "135px" },
-  { label: "Tracks", href: "#tracks", activeTab: "tracks", img: "/tracks/TRACKS.svg", width: "118px" },
-  { label: "Team Up", href: "#team-up", activeTab: "team-up", img: "/tracks/TEAM UP.svg", width: "118px" },
-  { label: "FAQ", href: "#faq", activeTab: "faq", img: "/tracks/FAQ.svg", width: "70px" },
+  { label: "Timeline", href: "/timeline", img: "/tracks/TIMELINE.svg", width: "135px" },
+  { label: "Tracks", href: "/tracks", img: "/tracks/TRACKS.svg", width: "118px" },
+  { label: "Team Up", href: "/team-up", img: "/tracks/TEAM UP.svg", width: "118px" },
+  { label: "FAQ", href: "/faq", img: "/tracks/FAQ.svg", width: "70px" },
 ];
 
 export default function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    router.push(href);
   };
+
+  const isActive = (href: string) => pathname === href;
 
   return (
     <>
@@ -55,12 +58,14 @@ export default function SiteHeader() {
             <div key={link.label} className="relative flex flex-col items-center">
               <Link
                 href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
                 className="transition-all duration-200 hover:-translate-y-0.5 hover:opacity-75"
               >
                 <div className="relative h-[28px] md:h-[32px]" style={{ width: link.width }}>
                   <Image src={link.img} alt={link.label} fill className="object-contain" />
                 </div>
               </Link>
+              {isActive(link.href) && <div className="mt-1.5 h-1 w-1 rounded-full bg-pink-500" />}
             </div>
           ))}
         </nav>
@@ -135,7 +140,7 @@ export default function SiteHeader() {
                   <div className="relative h-[26px]" style={{ width: link.width }}>
                     <Image src={link.img} alt={link.label} fill className="object-contain" />
                   </div>
-                  <span className="text-sm text-white/50">{link.label}</span>
+                  <span className={`text-sm ${isActive(link.href) ? "text-white" : "text-white/50"}`}>{link.label}</span>
                 </motion.button>
               ))}
 

@@ -189,8 +189,7 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
 
   return (
     <section
-      id="team-up"
-      className="relative isolate flex min-h-screen w-full flex-col overflow-hidden bg-black text-white scroll-mt-28 lg:scroll-mt-40"
+      className="relative isolate flex min-h-screen w-full flex-col overflow-hidden bg-black text-white"
     >
       <div className="relative z-10 grid flex-1 grid-cols-1 items-center gap-8 px-5 pb-10 sm:px-8 md:gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:gap-[clamp(1rem,2vw,2rem)] lg:px-[clamp(2rem,5vw,6rem)] lg:pb-[clamp(2.5rem,5vh,5rem)] lg:pt-2">
         <motion.section

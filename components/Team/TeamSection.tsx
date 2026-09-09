@@ -49,8 +49,7 @@ export default function TeamSection({
 }: TeamSectionProps) {
   return (
     <section
-      id="team"
-      className="relative flex min-h-screen w-full max-w-none flex-col items-center bg-black text-white select-none overflow-hidden px-0 mx-0 scroll-mt-28 lg:scroll-mt-40"
+      className="relative flex min-h-screen w-full max-w-none flex-col items-center bg-black text-white select-none overflow-hidden px-0 mx-0"
     >
       {/* Decorative background vectors */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">

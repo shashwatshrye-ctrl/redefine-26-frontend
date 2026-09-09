@@ -72,7 +72,7 @@ export default function SideMenu() {
   const router = useRouter();
 
   const navigate = (id: string) => {
-    router.push(`/home#${id}`);
+    router.push(`/${id}`);
   };
 
   return (

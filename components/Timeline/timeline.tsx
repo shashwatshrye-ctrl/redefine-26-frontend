@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-// import Head from "../Navigation/head";
 
 type Phase = {
   id: number;
@@ -37,8 +36,7 @@ function NotebookLines({ count = 7, className = "" }: { count?: number; classNam
 
 export default function Timeline() {
   return (
-    <main id="timeline" className="relative isolate min-h-screen w-full overflow-hidden bg-black text-white flex flex-col justify-between pt-24 pb-12 scroll-mt-28 lg:scroll-mt-40">
-      {/* <Head activeTab="timeline" /> */}
+    <section className="relative isolate min-h-screen w-full overflow-hidden bg-black text-white flex flex-col justify-between pt-24 pb-12">
 
       {/* Desktop Collage Container (lg and up) */}
       <div className="relative w-[85vw] max-w-[1700px] aspect-[16/9.5] min-h-[680px] hidden lg:block select-none overflow-hidden mx-auto my-auto px-4">
@@ -373,7 +371,7 @@ export default function Timeline() {
         </div>
       </div>
 
-    </main>
+    </section>
   );
 }
 

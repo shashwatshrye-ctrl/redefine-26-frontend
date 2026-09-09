@@ -182,7 +182,7 @@ export default function TracksSection() {
   const [mobileHoveredIdx, setMobileHoveredIdx] = useState<number | null>(null);
 
   return (
-    <div id="tracks" className="w-full flex flex-col items-center pt-0 pb-2 select-none overflow-hidden scroll-mt-28 lg:scroll-mt-40">
+    <div className="w-full flex flex-col items-center pt-0 pb-2 select-none overflow-hidden">
       {/* Mobile/Tablet Fan Layout (< lg) */}
       <div className="lg:hidden flex flex-col items-center justify-center w-full py-4 relative select-none">
         {/* Fan blades wrapper with locked aspect ratio, scales smoothly across breakpoints */}

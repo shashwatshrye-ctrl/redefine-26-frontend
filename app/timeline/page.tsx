@@ -1,5 +1,10 @@
-import { redirect } from "next/navigation";
+import SectionPage from "@/components/Layout/SectionPage";
+import Timeline from "@/components/Timeline/timeline";
 
 export default function TimelinePage() {
-  redirect("/home#timeline");
+  return (
+    <SectionPage>
+      <Timeline />
+    </SectionPage>
+  );
 }

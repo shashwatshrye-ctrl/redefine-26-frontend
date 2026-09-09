@@ -84,8 +84,7 @@ export default function FAQSection() {
 
   return (
     <section
-      id="faq"
-      className="relative w-full bg-black px-6 py-20 md:px-10 lg:px-16 scroll-mt-28 lg:scroll-mt-40"
+      className="relative w-full bg-black px-6 py-20 md:px-10 lg:px-16"
     >
       <div className="mx-auto max-w-3xl">
         <motion.h2
