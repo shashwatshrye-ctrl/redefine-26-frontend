@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SectionPage from "@/components/Layout/SectionPage";
-import AuthPortal from "@/components/Auth/AuthPortal";
+import RegisterPortal from "@/components/Register/RegisterPortal";
 
 export const metadata: Metadata = {
   title: "Register",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function RegisterPage() {
   return (
     <SectionPage hideRegisterButton>
-      <AuthPortal />
+      <RegisterPortal />
     </SectionPage>
   );
 }

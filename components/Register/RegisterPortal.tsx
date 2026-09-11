@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { initiateGoogleSignIn, getStoredUser, type StudentType } from "@/lib/auth";
 import WigglyCurvesBackground from "./WigglyCurvesBackground";
 
-export default function AuthPortal() {
+export default function RegisterPortal() {
   const router = useRouter();
   const [loadingType, setLoadingType] = useState<StudentType | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
@@ -43,13 +43,13 @@ export default function AuthPortal() {
       <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-6 w-full max-w-3xl translate-y-[6vh] sm:translate-y-[20vh]">
         {/* Two Buttons: External & Internal */}
         <div className="flex flex-col sm:flex-row items-center justify-center -space-y-4 sm:space-y-0 sm:gap-6 w-full">
-          <AuthSVGButton
+          <RegisterSVGButton
             label="EXTERNAL"
             onClick={() => handleSignIn("external")}
             disabled={loadingType !== null}
             isLoading={loadingType === "external"}
           />
-          <AuthSVGButton
+          <RegisterSVGButton
             label="INTERNAL"
             onClick={() => handleSignIn("internal")}
             disabled={loadingType !== null}
@@ -67,7 +67,7 @@ export default function AuthPortal() {
   );
 }
 
-function AuthSVGButton({
+function RegisterSVGButton({
   label,
   onClick,
   disabled,
@@ -155,7 +155,7 @@ function ParticipateBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden z-0">
       <div 
-        className="relative font-zilla text-white -translate-y-[13vh] sm:-translate-y-[15vh] drop-shadow-[0_0_15px_#CF3A6E] sm:drop-shadow-[0_0_25px_#CF3A6E] drop-shadow-[0_0_35px_rgba(207,58,110,0.45)]"
+        className="relative font-zilla text-white -translate-y-[13vh] sm:-translate-y-[15vh]"
         style={{ 
           fontFamily: "'Zilla Slab Highlight', 'Zilla Slab', serif",
           fontSize: "clamp(34px, 11.5vw, 170px)", 
