@@ -3,10 +3,12 @@
 import Image from "next/image";
 import { FormEvent, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import {
   createTeam,
   fetchTracks,
   joinTeam,
+  saveCurrentTeam,
   DEFAULT_TRACKS,
   type Team,
   type Track,
@@ -136,6 +138,7 @@ interface TeamUpFlowProps {
 }
 
 export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
+  const router = useRouter();
   const [step, setStep] = useState<Step>("choose");
   const [tracks, setTracks] = useState<Track[]>(DEFAULT_TRACKS);
 
@@ -153,7 +156,7 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
         if (active && remoteTracks.length) setTracks(remoteTracks);
       })
       .catch(() => {
-        /* keep the bundled default tracks */
+        /* keep bundled tracks */
       });
     return () => {
       active = false;
@@ -180,7 +183,9 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
     setLoading(true);
     try {
       const team = await createTeam({ name: teamName, trackId });
+      saveCurrentTeam(team);
       onTeamFormed?.(team);
+      router.push("/team");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
@@ -198,7 +203,9 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
     setLoading(true);
     try {
       const team = await joinTeam({ code: teamCode });
+      saveCurrentTeam(team);
       onTeamFormed?.(team);
+      router.push("/team");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
