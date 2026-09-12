@@ -13,10 +13,14 @@ export default function TeamUpPage() {
     setFormedTeam(team);
   }, []);
 
+  const handleReset = useCallback(() => {
+    setFormedTeam(null);
+  }, []);
+
   return (
     <SectionPage>
       {formedTeam ? (
-        <TeamSection teamName={formedTeam.name} />
+        <TeamSection teamName={formedTeam.name} onReset={handleReset} />
       ) : (
         <TeamUpFlow onTeamFormed={handleTeamFormed} />
       )}
