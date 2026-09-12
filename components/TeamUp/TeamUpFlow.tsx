@@ -12,8 +12,6 @@ import {
   type Track,
 } from "@/lib/teamup";
 
-import DesktopBackgroundThreads from "@/components/Team/DesktopBackgroundThreads";
-
 type Step = "choose" | "build" | "join";
 
 const reveal = {
@@ -39,10 +37,10 @@ function FieldLabel({ icon, label, alt }: { icon: string; label: string; alt: st
 
 function TeamIllustration() {
   return (
-    <div className="relative h-full w-[108%] max-w-[540px] lg:w-auto lg:max-w-full aspect-[760/904] overflow-hidden">
+    <div className="relative h-full w-[108%] max-w-[540px] lg:w-auto lg:max-w-full aspect-[899/1024] overflow-hidden">
       <Image
-        src="/teamup/left_artwork.png"
-        alt="Hands joining puzzle pieces to form a team"
+        src="/teamupart.svg"
+        alt="Team Up Artwork"
         fill
         priority
         sizes="(min-width: 1024px) 52vw, 100vw"
@@ -137,51 +135,6 @@ interface TeamUpFlowProps {
   onTeamFormed?: (team: Team) => void;
 }
 
-function MobileBackgroundVectors() {
-  return (
-    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden lg:hidden">
-      <svg
-        className="h-full w-full opacity-40"
-        viewBox="0 0 390 844"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M 120 0 C 130 45, 240 55, 390 10"
-          stroke="#EC4899"
-          strokeWidth="1.2"
-          strokeOpacity="0.6"
-        />
-        <path
-          d="M 0 40 C 60 70, 40 160, 0 200"
-          stroke="#EC4899"
-          strokeWidth="1.2"
-          strokeOpacity="0.5"
-        />
-        <path
-          d="M 0 160 C 45 220, -10 380, 40 460 C 75 520, 10 700, 0 760"
-          stroke="#EC4899"
-          strokeWidth="1.2"
-          strokeOpacity="0.5"
-        />
-        <path
-          d="M 390 150 C 340 220, 370 380, 390 480"
-          stroke="#EC4899"
-          strokeWidth="1.2"
-          strokeOpacity="0.4"
-        />
-        <path
-          d="M 390 520 C 330 580, 360 680, 390 750"
-          stroke="#EC4899"
-          strokeWidth="1.2"
-          strokeOpacity="0.4"
-        />
-      </svg>
-    </div>
-  );
-}
-
 export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
   const [step, setStep] = useState<Step>("choose");
   const [tracks, setTracks] = useState<Track[]>(DEFAULT_TRACKS);
@@ -257,9 +210,6 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
     <section
       className="relative isolate flex h-full w-full flex-col overflow-hidden bg-black text-white select-none"
     >
-      <MobileBackgroundVectors />
-      <DesktopBackgroundThreads />
-
       <div className="relative z-10 flex h-full w-full flex-col items-center px-4 pt-3 pb-0 lg:grid lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:grid-rows-1 lg:gap-[clamp(1rem,2vw,2rem)] lg:pl-[clamp(3.5rem,7vw,9rem)] lg:pr-[clamp(1rem,3vw,3rem)] lg:py-4">
         {/* Interactive panel: Top on mobile, Right on desktop */}
         <motion.section
