@@ -64,20 +64,12 @@ export default function TeamSection({
   const displayMembers = members.length > 0 ? members.slice(0, 4) : DEFAULT_MEMBERS;
 
   return (
-    <section className="relative flex h-full w-full max-w-none flex-col items-center justify-between bg-black text-white select-none overflow-x-hidden px-0 mx-0">
-      {/* Background animated threads */}
-      <div className="hidden lg:block w-full h-full">
-        <DesktopBackgroundThreads />
-      </div>
-
-      {/* ========================================================================= */}
-      {/* MOBILE & TABLET / MEDIUM VIEW (Screens < 1024px: sm, md)                  */}
-      {/* ========================================================================= */}
+    <section className="relative flex h-full w-full max-w-none flex-col items-center justify-between bg-black text-white select-none overflow-hidden px-0 mx-0">
+      <DesktopBackgroundThreads />
+      {/* Mobile view */}
       <div className="flex flex-col lg:hidden w-full h-full min-h-screen bg-black relative isolate pb-6">
-        {/* Dynamic Strings background on mobile top */}
         <DynamicStringsBackground opacity={0.5} />
 
-        {/* Mobile Header Title */}
         <motion.div
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -102,7 +94,7 @@ export default function TeamSection({
           )}
         </motion.div>
 
-        {/* 4 Stacked Vertical Gradient Panels matching the reference screenshot */}
+        {/* Mobile member cards */}
         <div className="relative z-10 flex flex-col w-full flex-1 divide-y-4 divide-black border-y-4 border-black">
           {displayMembers.map((member, index) => {
             const config = MOBILE_PANEL_CONFIGS[index % MOBILE_PANEL_CONFIGS.length];
@@ -115,7 +107,6 @@ export default function TeamSection({
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative w-full h-[145px] sm:h-[185px] md:h-[225px] overflow-hidden bg-[linear-gradient(180deg,#9B1A45_0%,#CE3566_55%,#F3799D_100%)] flex items-center shadow-[inset_0_0_24px_rgba(0,0,0,0.3)]"
               >
-                {/* Silhouette Image */}
                 <div className={`absolute z-10 ${config.silhouetteClass}`}>
                   <Image
                     src={member.silhouette || config.silhouette}
@@ -125,7 +116,6 @@ export default function TeamSection({
                   />
                 </div>
 
-                {/* Brain Graphic on Silhouette Head */}
                 <div className={`absolute z-20 pointer-events-none ${config.brainClass}`}>
                   <Image
                     src="/team/image 35.png"
@@ -135,7 +125,6 @@ export default function TeamSection({
                   />
                 </div>
 
-                {/* Member Text Info (Name & Roll Number) */}
                 <div className={`relative z-20 flex flex-col justify-center w-full ${config.textClass}`}>
                   <h3 className="font-extrabold uppercase text-white text-base sm:text-2xl md:text-3xl leading-snug tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
                     {member.name.split(" ").map((word, i) => (
@@ -154,84 +143,95 @@ export default function TeamSection({
         </div>
       </div>
 
-      {/* ========================================================================= */}
-      {/* DESKTOP VIEW (Screens >= 1024px: lg, xl)                                   */}
-      {/* ========================================================================= */}
-      <div className="hidden lg:flex relative z-10 h-full min-h-0 w-full max-w-none flex-col items-center px-2 sm:px-4 pt-2 sm:pt-4 pb-0">
+      {/* Desktop view */}
+      <div className="hidden lg:flex relative z-10 h-full min-h-0 w-full flex-col items-center justify-between p-0 m-0 overflow-hidden">
         {/* Title */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="relative w-[540px] xl:w-[600px] aspect-[575/79] shrink-0 mt-1 sm:mt-2"
+          transition={{ duration: 0.5 }}
+          className="relative z-20 flex flex-col items-center justify-center w-full p-0 shrink-0 m-0 pt-2"
         >
           {teamName === "TEAM NAME" ? (
-            <Image
-              src="/team/TEAM NAME.png"
-              alt="Team Name"
-              fill
-              priority
-              unoptimized
-              className="object-contain drop-shadow-[0_0_16px_rgba(255,255,255,0.35)]"
-            />
+            <div className="relative w-[280px] sm:w-[360px] md:w-[420px] lg:w-[460px] aspect-[575/79]">
+              <Image
+                src="/team/TEAM NAME.png"
+                alt="Team Name"
+                fill
+                priority
+                unoptimized
+                className="object-contain drop-shadow-[0_0_18px_rgba(255,255,255,0.45)]"
+              />
+            </div>
           ) : (
-            <h2 className="text-center font-extrabold uppercase tracking-widest text-5xl xl:text-6xl text-white drop-shadow-[0_0_16px_rgba(255,255,255,0.4)]">
+            <h2 className="text-center font-extrabold uppercase tracking-widest text-4xl sm:text-5xl lg:text-6xl text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.5)]">
               {teamName}
             </h2>
           )}
         </motion.div>
 
-        {/* Main Artwork Container featuring team.svg - Scaled Big */}
-        <div className="relative mt-1 sm:mt-2 w-full flex-1 min-h-0 flex flex-col justify-end items-center pb-0 px-0">
-          <div className="relative w-full h-full flex flex-col justify-end items-center overflow-visible">
-            <div className="relative w-full aspect-[1440/685] max-h-[92vh] min-h-[300px] flex items-end justify-center">
+        {/* Team artwork container */}
+        <div className="relative w-full flex-1 min-h-0 flex flex-col justify-end items-center overflow-hidden p-0 m-0">
+          <div className="relative h-full w-full max-h-full aspect-[1440/685] mx-auto flex items-end justify-center">
+            {/* Mirror Floor Reflection (dark reflection on black floor plane) */}
+            <div className="absolute top-[96%] left-0 w-full h-[32%] overflow-hidden pointer-events-none opacity-30 scale-y-[-1] origin-top blur-[0.5px] z-0">
               <Image
                 src="/team.svg"
-                alt="Team Artwork"
+                alt=""
                 fill
                 priority
                 sizes="100vw"
-                className="object-contain object-bottom scale-[1.18] sm:scale-[1.20] lg:scale-[1.22] origin-bottom"
+                className="object-contain object-bottom pointer-events-none select-none"
               />
-
-              {/* Dynamic Member Names & Roll Numbers overlay matching reference image */}
-              <div className="absolute inset-0 grid grid-cols-4 w-full h-full pointer-events-none z-10 scale-[1.05] origin-bottom">
-                {displayMembers.map((member, index) => {
-                  const isLeftPanel = index < 2; // Panels 1 & 2 have text on right side of panel
-                  return (
-                    <motion.div
-                      key={member.id || index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className={`relative h-full w-full flex flex-col justify-center items-start ${
-                        isLeftPanel
-                          ? "pl-[46%] sm:pl-[48%] lg:pl-[50%] pr-1 sm:pr-2"
-                          : "pl-[6%] sm:pl-[8%] lg:pl-[10%] pr-[40%]"
-                      } pt-[4%] sm:pt-[6%]`}
-                    >
-                      <div className="font-extrabold text-white text-2xl xl:text-3xl leading-tight tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] text-left">
-                        {member.name.split(" ").map((word, i) => (
-                          <span key={i} className="block">
-                            {word}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="font-mono font-bold text-white/95 text-base xl:text-lg tracking-wider pt-1.5 sm:pt-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] text-left">
-                        {member.rollNo}
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black" />
             </div>
+
+            <Image
+              src="/team.svg"
+              alt="Team Artwork"
+              fill
+              priority
+              sizes="100vw"
+              className="object-contain object-bottom pointer-events-none select-none relative z-10"
+            />
+
+            {/* Member text overlay - Commented out */}
+            {/*
+            <div className="absolute inset-0 grid grid-cols-4 w-full h-full pointer-events-none z-20">
+              {displayMembers.map((member, index) => {
+                const isLeftPanel = index < 2;
+                return (
+                  <motion.div
+                    key={member.id || index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className={`relative h-full w-full flex flex-col justify-center items-start ${
+                      isLeftPanel
+                        ? "pl-[46%] sm:pl-[47%] lg:pl-[48%] pr-[4%]"
+                        : "pl-[7%] sm:pl-[8%] lg:pl-[9%] pr-[41%]"
+                    } pt-[4%]`}
+                  >
+                    <div className="font-extrabold text-white text-[clamp(0.875rem,1.75vw,2.25rem)] leading-[1.12] tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] text-left">
+                      {member.name.split(" ").map((word, i) => (
+                        <span key={i} className="block">
+                          {word}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="font-mono font-bold text-white/95 text-[clamp(0.7rem,1.15vw,1.35rem)] tracking-wider pt-1 sm:pt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] text-left">
+                      {member.rollNo}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+            */}
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-

@@ -137,6 +137,8 @@ interface TeamUpFlowProps {
   onTeamFormed?: (team: Team) => void;
 }
 
+import DesktopBackgroundThreads from "@/components/Team/DesktopBackgroundThreads";
+
 export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
   const router = useRouter();
   const [step, setStep] = useState<Step>("choose");
@@ -217,7 +219,8 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
     <section
       className="relative isolate flex h-full w-full flex-col overflow-hidden bg-black text-white select-none"
     >
-      <div className="relative z-10 flex h-full w-full flex-col items-center px-4 pt-3 pb-0 lg:grid lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:grid-rows-1 lg:gap-[clamp(1rem,2vw,2rem)] lg:pl-[clamp(3.5rem,7vw,9rem)] lg:pr-[clamp(1rem,3vw,3rem)] lg:py-4">
+      <DesktopBackgroundThreads />
+      <div className="relative z-10 flex h-full w-full flex-col items-center p-0 lg:grid lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:grid-rows-1 lg:gap-4">
         {/* Interactive panel: Top on mobile, Right on desktop */}
         <motion.section
           initial="hidden"
@@ -225,7 +228,7 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
           viewport={{ once: true, amount: 0.2 }}
           variants={reveal}
           transition={{ duration: 0.55, delay: 0.12, ease: "easeOut" }}
-          className="order-1 relative z-20 flex min-h-0 w-[88vw] max-w-[350px] sm:max-w-[420px] md:max-w-[460px] lg:w-full lg:max-w-[32.875rem] h-[clamp(20rem,54vh,32rem)] min-h-[340px] lg:h-full lg:max-h-none items-center justify-center py-1 sm:py-2 lg:order-2 lg:justify-end shrink-0 translate-x-2 sm:translate-x-4"
+          className="order-1 relative z-20 flex min-h-0 w-[88vw] max-w-[350px] sm:max-w-[420px] md:max-w-[460px] lg:w-full lg:max-w-[32.875rem] h-[clamp(20rem,54vh,32rem)] min-h-[340px] lg:h-full lg:max-h-none items-center justify-center py-1 sm:py-2 lg:order-2 lg:justify-end shrink-0"
         >
           <AnimatePresence mode="wait">
             {step === "choose" && (
@@ -251,6 +254,15 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
                       alt="Join a team"
                       onClick={() => go("join")}
                     />
+                    <motion.button
+                      type="button"
+                      onClick={() => router.push("/team")}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="text-xs sm:text-sm font-semibold text-pink-300 hover:text-white underline tracking-wider transition-colors pt-1 text-center"
+                    >
+                      View Team Page Directly &rarr;
+                    </motion.button>
                   </div>
                 </div>
               </motion.div>
@@ -384,7 +396,7 @@ export default function TeamUpFlow({ onTeamFormed }: TeamUpFlowProps) {
           viewport={{ once: true, amount: 0.2 }}
           variants={reveal}
           transition={{ duration: 0.55, ease: "easeOut" }}
-          className="order-2 relative z-10 -mt-[clamp(2.5rem,7vh,5rem)] lg:mt-0 flex flex-1 h-[clamp(15rem,46vh,30rem)] min-h-[220px] lg:h-full w-full shrink-0 items-end justify-center overflow-hidden lg:order-1 lg:w-auto lg:justify-center translate-x-2 sm:translate-x-4"
+          className="order-2 relative z-10 -mt-[clamp(2.5rem,7vh,5rem)] lg:mt-0 flex flex-1 h-[clamp(15rem,46vh,30rem)] min-h-[220px] lg:h-full w-full shrink-0 items-end justify-center overflow-hidden lg:order-1 lg:w-auto lg:justify-center"
         >
           <TeamIllustration />
         </motion.section>
